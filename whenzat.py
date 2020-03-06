@@ -2,11 +2,16 @@ import pendulum
 import json
 import typing
 
-def loader(json_: str='when.json', from_file: bool=True):
-    """Return a list of datetimes for the requested json file"""
+
+def loader(json_: str, *, from_file: bool = True):
+    """
+    Return a list of datetimes for the requested json file
+    >>> loader('{"foo": "bar"}', from_file=False) == {"foo": "bar"}
+    """
 
     if from_file:
-        return json.load(json_)
+        with open(json_) as f:
+            return json.load(f)
 
     else:
         return json.loads(json_)
@@ -22,9 +27,11 @@ def pick_date(date: list, start=None):
     is_int = all([is_instance(x, int) for x in date])
 
     if all([is_string, is_int]) or None([is_string, is_int]):
-        raise(
-            ValueError('Please provide one type of \
-                date type (either ints or str'),
+        raise (
+            ValueError(
+                "Please provide one type of \
+                date type (either ints or str"
+            ),
         )
 
     if not start:
@@ -42,11 +49,17 @@ def pick_date(date: list, start=None):
     return max(dates)
 
 
-def parse_int(date: int):
+def parse_int(date: int, *, starting_date=pendulum.today()):
     """
-    Get the period between the target date and the starting_date. Use when
+    Get the period between the starting_date date and the starting_date. Use when
     the date is an int.
     """
-    target = pendulum.now()
-    target = target.set(day=date).set(tz=pendulum.local_timezone())
-    return target
+
+    if date >= starting_date.day:
+        starting_date = starting_date.set(day=date).set(tz=pendulum.local_timezone())
+
+    else:
+        starting_date = starting_date.set(day=date).set(tz=pendulum.local_timezone())
+        starting_date = starting_date.add(months=1)
+
+    return starting_date

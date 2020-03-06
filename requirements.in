@@ -1,0 +1,4 @@
+pendulum
+pytest
+pytest-cov
+pip-tools

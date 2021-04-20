@@ -4,19 +4,40 @@
 #
 #    pip-compile requirements.in
 #
-attrs==19.3.0             # via pytest
-click==7.0                # via pip-tools
-coverage==5.0.3           # via pytest-cov
-more-itertools==8.2.0     # via pytest
-packaging==20.3           # via pytest
-pendulum==2.0.5           # via -r requirements.in
-pip-tools==4.5.1          # via -r requirements.in
-pluggy==0.13.1            # via pytest
-py==1.8.1                 # via pytest
-pyparsing==2.4.6          # via packaging
-pytest-cov==2.8.1         # via -r requirements.in
-pytest==5.3.5             # via -r requirements.in, pytest-cov
-python-dateutil==2.8.1    # via pendulum
-pytzdata==2019.3          # via pendulum
-six==1.14.0               # via packaging, pip-tools, python-dateutil
-wcwidth==0.1.8            # via pytest
+attrs==19.3.0
+    # via pytest
+click==7.0
+    # via pip-tools
+coverage==5.0.3
+    # via pytest-cov
+more-itertools==8.2.0
+    # via pytest
+packaging==20.3
+    # via pytest
+pendulum==2.0.5
+    # via -r requirements.in
+pip-tools==4.5.1
+    # via -r requirements.in
+pluggy==0.13.1
+    # via pytest
+py==1.10.0
+    # via pytest
+pyparsing==2.4.6
+    # via packaging
+pytest-cov==2.8.1
+    # via -r requirements.in
+pytest==5.3.5
+    # via
+    #   -r requirements.in
+    #   pytest-cov
+python-dateutil==2.8.1
+    # via pendulum
+pytzdata==2019.3
+    # via pendulum
+six==1.14.0
+    # via
+    #   packaging
+    #   pip-tools
+    #   python-dateutil
+wcwidth==0.1.8
+    # via pytest
